@@ -24,7 +24,23 @@ Na inspeção do navegador, a coleção apresentou 50 silhuetas, o filtro Astral
 
 Os saves com todas as licenças e equipamento avançado usados na inspeção visual pertencem à sessão de teste isolada; não fazem parte da aventura inicial do jogo. Um jogador novo começa com 50 moedas, Vara Inicial e apenas a Enseada.
 
-O servidor local foi aberto e o perfil multiplayer existente foi restaurado. Testes pela internet entre computadores externos, benchmark em hardware simples e execução do Docker não foram realizados. Não houve publicação em hospedagem pública.
+O servidor local foi aberto e o perfil multiplayer existente foi restaurado. Benchmark em hardware simples e execução do Docker não foram realizados.
+
+## Publicação verificada
+
+Em 2 de outubro de 2026, o repositório [ryangmolinari/mare-viva](https://github.com/ryangmolinari/mare-viva) foi criado como público e o serviço gratuito foi publicado em [mare-viva-q6xr.onrender.com](https://mare-viva-q6xr.onrender.com/).
+
+Os 12 testes também passaram no build Linux do Render e no workflow do GitHub, que executa Linux e Windows. Os 51 arquivos do primeiro deploy foram baixados do GitHub sem autenticação e comparados à entrega; os saves e identificadores locais estavam ausentes.
+
+No serviço público, com TLS validado, foram confirmados:
+
+- `/health` com HTTP 200, `ok: true` e capacidade 12; página, CSS e módulos com HTTP 200.
+- Handshake WSS, perfil inicial com 50 moedas, 12 participantes reais na mesma sala e recusa do 13º.
+- Captura de um peixe com entradas do minigame, atualização de inventário e retomada da mesma captura após reconexão.
+- HTTP 404 para `/data/profiles.json`.
+- Entrada multiplayer pelo navegador, com mapa renderizado e indicador de sala online.
+
+Essa reconexão foi verificada na mesma instância. O plano gratuito perde os saves multiplayer quando reinicia, suspende ou recebe uma nova implantação. Não foi realizado um teste de longa duração com jogadores humanos em redes distintas.
 
 Para repetir os testes:
 

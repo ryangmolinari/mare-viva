@@ -2,6 +2,12 @@
 
 Jogo de pesca 2D para navegador, com mundo em tiles, arte original em pixel, cinco ilhas, cinquenta espécies exclusivas e salas multiplayer para até 12 jogadores. Não depende de serviços pagos, downloads de assets, fontes externas ou pacotes npm.
 
+## Jogar online
+
+**[Abrir Maré Viva no Render](https://mare-viva-q6xr.onrender.com/)** · [Repositório público](https://github.com/ryangmolinari/mare-viva)
+
+Escolha Multiplayer e compartilhe o código da sala com seus amigos. A hospedagem usa o plano gratuito do Render: pode demorar a despertar após inatividade e os saves multiplayer são temporários, perdidos em reinicializações e novas implantações. O diário solo continua salvo no navegador.
+
 ## Jogar
 
 No Windows, abra **Jogar.cmd**. Ele usa o Node.js instalado ou o runtime do Codex já disponível neste computador. Mantenha a janela do servidor aberta e visite **http://localhost:3210**.
@@ -93,4 +99,4 @@ npm test
 
 Os testes incluem catálogo completo, pesos e recordes, venda, equipamento, progressão, sorteio por área e horário, caminhos dos mapas, captura e falha solo, 12 conexões reais, recusa do 13º, salas independentes, reconexão, salvamento e captura validada pelo servidor.
 
-A implementação usa uma única instância de servidor e arquivo JSON para saves. É uma versão jogável independente; publicação, testes com pessoas pela internet, distribuição com instalador e infraestrutura para múltiplas instâncias são etapas adicionais. Missões, clãs, comércio e torneios podem ser adicionados pelos pontos de expansão descritos na arquitetura.
+A implementação usa uma única instância de servidor e arquivo JSON para saves. A publicação no Render e as conexões WSS pela internet foram verificadas. Distribuição com instalador e infraestrutura para múltiplas instâncias são etapas adicionais. Missões, clãs, comércio e torneios podem ser adicionados pelos pontos de expansão descritos na arquitetura.

@@ -2,6 +2,14 @@
 
 O servidor Node entrega o jogo e o multiplayer no mesmo endereço. Use um **Web Service**, com HTTPS/WSS automático do Render.
 
+Publicado em 2 de outubro de 2026:
+
+- Jogo: [mare-viva-q6xr.onrender.com](https://mare-viva-q6xr.onrender.com/).
+- Código: [ryangmolinari/mare-viva](https://github.com/ryangmolinari/mare-viva), público, branch `main`.
+- Plano: Free, US$ 0/mês, Node 24.19.0, Virginia, sem disco persistente.
+- Health: [/health](https://mare-viva-q6xr.onrender.com/health).
+- Atualização: commits em `main` iniciam um build, com `npm test` antes do deploy.
+
 ## Repositório público
 
 Publique os arquivos deste diretório na raiz do repositório, na branch `main`. Preserve a estrutura de `public/`, `shared/`, `tests/` e `.github/`.
@@ -41,7 +49,7 @@ Configuração equivalente pelo painel:
 
 O disco preserva os perfis do servidor. Cada jogador precisa manter o identificador no armazenamento do seu navegador para retomá-los. Faça backups privados do arquivo `profiles.json`; ele contém identificadores de acesso.
 
-## Conferir depois de publicar
+## Conferir depois de uma atualização
 
 1. Espere o serviço indicar **Live**.
 2. Abra a URL pública e entre em Multiplayer.
