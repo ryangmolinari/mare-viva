@@ -1,0 +1,1 @@
+export class CollectionSystem {constructor(game){this.game=game;}get records(){return this.game.profile.collection;}get discovered(){return Object.keys(this.records).length;}get(id){return this.records[id];}}
