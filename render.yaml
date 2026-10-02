@@ -1,0 +1,25 @@
+# Implantação gratuita. Saves multiplayer são temporários neste plano.
+# Para disco persistente, veja deploy/render-persistente.yaml e PUBLICACAO.md.
+services:
+  - type: web
+    name: mare-viva
+    runtime: node
+    plan: free
+    region: virginia
+    branch: main
+    buildCommand: npm test
+    startCommand: npm start
+    healthCheckPath: /health
+    autoDeployTrigger: commit
+    maxShutdownDelaySeconds: 30
+    envVars:
+      - key: NODE_VERSION
+        value: 24.19.0
+      - key: NODE_ENV
+        value: production
+      - key: HOST
+        value: 0.0.0.0
+      - key: SAVE_DIR
+        value: /tmp/mare-viva-data
+      - key: SKIP_INSTALL_DEPS
+        value: "true"

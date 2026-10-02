@@ -1,0 +1,5 @@
+{
+  "name": "mare-viva", "version": "1.0.0", "private": true,
+  "type": "module", "engines": { "node": ">=22 <25" },
+  "scripts": { "start": "node server.mjs", "test": "node --import ./tests/browser-alias.mjs --test tests/*.test.mjs" }
+}
