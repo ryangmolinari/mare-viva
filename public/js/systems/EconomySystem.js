@@ -1,0 +1,1 @@
+export class EconomySystem {constructor(game){this.game=game;}get coins(){return this.game.profile.coins;}get haul(){return this.game.profile.inventory.reduce((s,f)=>s+f.value,0);}canAfford(value){return this.coins>=value;}sell(uid){return this.game.action('sell',{uid});}}
