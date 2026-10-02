@@ -1,0 +1,29 @@
+# Modelo pago: confirme o custo exibido pelo Render antes de aplicar.
+services:
+  - type: web
+    name: mare-viva
+    runtime: node
+    plan: 0.5c-512mb
+    region: virginia
+    branch: main
+    buildCommand: npm test
+    startCommand: npm start
+    healthCheckPath: /health
+    autoDeployTrigger: commit
+    maxShutdownDelaySeconds: 30
+    numInstances: 1
+    disk:
+      name: mare-viva-saves
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_VERSION
+        value: 24.19.0
+      - key: NODE_ENV
+        value: production
+      - key: HOST
+        value: 0.0.0.0
+      - key: SAVE_DIR
+        value: /var/data/mare-viva
+      - key: SKIP_INSTALL_DEPS
+        value: "true"
