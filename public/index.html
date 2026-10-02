@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#203d45"><title>Maré Viva — Um horizonte de descobertas</title><link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="stylesheet" href="/style.css"></head>
+<body>
+ <canvas id="world" aria-label="Mundo de Maré Viva. Use WASD para caminhar, E para interagir e Espaço para pescar."></canvas>
+ <div id="vignette"></div><div id="transition"><span>Enseada do Sol</span><small>uma nova maré, uma nova história</small></div>
+ <section id="welcome">
+  <div class="welcome-shade"></div><div class="welcome-content">
+   <div class="eyebrow"><span class="sun-mark">✦</span> UM HORIZONTE DE DESCOBERTAS</div>
+   <h1>Maré<br><em>Viva.</em></h1><p class="intro">Toda ilha guarda uma história.<br>O próximo arremesso pode ser a sua.</p>
+   <div class="start-panel"><label for="player-name">COMO VAMOS CHAMAR VOCÊ?</label><input id="player-name" maxlength="18" placeholder="Seu nome" value="Pescador" autocomplete="nickname">
+    <div class="character-label">ESCOLHA SEU VIAJANTE</div><div id="characters"></div>
+    <div class="mode-tabs"><button class="active" data-mode="online">♧ Multiplayer</button><button data-mode="local">☀ Aventura solo</button></div>
+    <div id="room-row"><label for="room-code">SALA · ATÉ 12 VIAJANTES</label><input id="room-code" value="ENSEADA" maxlength="16" autocomplete="off"></div>
+    <button id="start" class="primary">Começar aventura <span>→</span></button><div id="start-error" role="alert"></div>
+   </div><div class="welcome-foot"><span>5 ilhas para explorar</span><i>·</i><span>50 espécies para descobrir</span></div>
+  </div><div class="welcome-location"><span class="location-dot"></span> ENSEADA DO SOL <small>Uma boa maré espera por você.</small></div>
+ </section>
+ <main id="hud" hidden>
+  <header class="topbar"><div class="brand">Maré <em>Viva</em><span class="brand-star">✦</span></div><div class="island-heading"><span class="small-label">VOCÊ ESTÁ EM</span><strong id="island-name">Enseada do Sol</strong></div><div class="top-right"><div class="time-pill"><span id="time-icon">☀</span><span id="clock">08:00</span></div><div class="coin-pill"><span class="coin-icon">●</span><strong id="coins">50</strong></div><button class="icon-button" id="sound-toggle" title="Ativar ou desativar som" aria-label="Ativar ou desativar som">♫</button><button class="icon-button" data-panel="settings" title="Configurações" aria-label="Configurações">⚙</button></div></header>
+  <aside class="journey-card"><div class="small-label">SEU DIÁRIO DE VIAGEM <span>✧</span></div><h2 id="quest-title">Um primeiro arremesso</h2><p id="quest-text">Caminhe até a borda do píer e lance a linha na água.</p><div class="quest-progress"><span id="quest-progress"></span></div><div class="quest-bottom"><span id="discovered">0 / 50 descobertas</span><button data-panel="collection" title="Abrir coleção">↗</button></div></aside>
+  <aside class="map-card"><canvas id="minimap" width="170" height="114" aria-label="Minimapa da ilha"></canvas><div><span id="session-label">AVENTURA SOLO</span><span class="online-dot"></span><span id="player-count">1 / 12</span></div><button id="routes-button">Explorar arquipélago <span>↗</span></button></aside>
+  <div id="notices" aria-live="polite"></div><div id="interaction" hidden></div>
+  <div id="fishing-status" hidden><span class="small-label">NA OUTRA PONTA DA LINHA</span><strong id="fishing-label">À espera de uma descoberta…</strong><span id="fishing-hint">Observe a boia</span></div>
+  <section id="minigame" hidden><div class="small-label">MANTENHA O PEIXE NA ÁREA VERDE</div><div class="mini-layout"><div class="mini-bar"><div id="catch-zone"></div><span id="mini-fish">◆</span></div><div class="mini-copy"><canvas id="mini-sprite" width="96" height="72"></canvas><strong id="mini-name">Peixe fisgado!</strong><p>Segure <kbd>Espaço</kbd> ou o botão para subir.<br>Solte para descer.</p><div class="capture-progress"><span id="capture-progress"></span></div><small id="capture-percent">26% capturado</small></div></div></section>
+  <footer class="bottom-bar"><div class="key-guide"><span><kbd>W A S D</kbd> caminhar</span><span><kbd>E</kbd> interagir</span></div><div class="hotbar"><button class="selected" id="rod-slot" title="1 · Vara"><span class="slot-key">1</span><canvas width="40" height="40" id="rod-icon"></canvas><small>Vara</small></button><button id="bait-slot" title="2 · Trocar isca"><span class="slot-key">2</span><span class="bait-symbol">〰</span><small id="bait-count">Sem isca</small></button><button data-panel="inventory" title="I · Mochila"><span class="slot-key">I</span><span class="bag-symbol">▣</span><small>Mochila</small><span id="inventory-count" class="slot-count">0</span></button><button data-panel="collection" title="C · Coleção"><span class="slot-key">C</span><span class="book-symbol">▤</span><small>Coleção</small></button><button id="emote-button" title="R · Acenar"><span class="slot-key">R</span><span class="emote-symbol">☺</span><small>Acenar</small></button></div><button id="action-button" class="action-button">Lançar linha <kbd>Espaço</kbd></button></footer>
+  <div id="mobile-controls"><div class="dpad"><button data-move="up">↑</button><button data-move="left">←</button><button data-move="down">↓</button><button data-move="right">→</button></div><button id="touch-interact">E</button></div>
+  <div id="network-lost" hidden><strong>A conexão com a sala foi interrompida.</strong><span>Seu progresso foi salvo no servidor. Reconecte para continuar.</span><button id="reconnect" class="primary">Reconectar</button></div>
+ </main>
+ <div id="overlay" hidden><section id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><header><div><div class="small-label" id="modal-eyebrow">SEU EQUIPAMENTO</div><h2 id="modal-title">Mochila</h2></div><button id="close-modal" class="close-button" aria-label="Fechar">×</button></header><div id="modal-body"></div><footer id="modal-footer"></footer></section></div>
+ <script type="module" src="/js/game.js"></script>
+</body></html>
